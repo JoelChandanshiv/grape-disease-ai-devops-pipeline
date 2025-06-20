@@ -1,0 +1,15 @@
+# Core ML & Image Processing
+torch
+torchvision
+Pillow
+
+# AWS SDK
+boto3
+sagemaker
+
+# Frontend Flask App
+flask
+requests
+
+# Optional (for linting, zipping, or CLI tools)
+python-dotenv

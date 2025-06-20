@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pkl
+*.joblib
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Environment
+.env
+venv/
+*.zip
+
+# IDE
+.vscode/
+.idea/
+
+# AWS credentials
+*.pem
+*.aws
