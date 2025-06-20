@@ -21,3 +21,31 @@ venv/
 # AWS credentials
 *.pem
 *.aws
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Lambda zip files
+lambda/lambda.zip
+
+# Model artifacts
+model.tar.gz
+
+# Terraform state and cache
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# VSCode or IDE metadata
+.vscode/
+.idea/
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Sample or test images
+*.JPG
+*.jpg
