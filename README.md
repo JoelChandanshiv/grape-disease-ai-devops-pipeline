@@ -1,6 +1,6 @@
-# 🍇 Grape Disease Detection using AI & DevOps 🚀
+# 🍇 Grape Disease Detection using AI, Bedrock & DevOps 🚀
 
-A complete end-to-end AI-powered web application that leverages **Deep Learning + DevOps + AWS Cloud** to identify diseases in grape leaves. This project integrates **AWS SageMaker**, **Lambda**, **API Gateway**, **Terraform**, and **GitHub Actions** into a fully automated CI/CD pipeline — demonstrating real-world MLOps practices and scalable serverless deployment.
+A complete end-to-end AI-powered web application that uses **Deep Learning + AWS Bedrock + DevOps + Cloud** to detect diseases in grape leaves. This project integrates **AWS SageMaker**, **Lambda**, **API Gateway**, **Bedrock**, **Terraform**, and **GitHub Actions** into a fully automated CI/CD pipeline — showcasing real-world MLOps practices with serverless infrastructure and GenAI explainability.
 
 ![App Screenshot](assets/screenshot.png) <!-- Replace with real screenshot -->
 
@@ -8,57 +8,67 @@ A complete end-to-end AI-powered web application that leverages **Deep Learning 
 
 ## 📌 Why This Project?
 
-Grape farming is vulnerable to fungal and bacterial infections, leading to huge losses. Manual inspection is time-consuming and error-prone.
+Grape crops are highly vulnerable to fungal diseases that drastically reduce yield and quality. Manual inspection is tedious and inaccurate.
 
-This solution provides a **real-time, AI-driven prediction system** deployed on the cloud, allowing farmers or agronomists to upload grape leaf images and receive **instant disease diagnosis** — all through a modern, DevOps-enabled pipeline.
+This system provides a **real-time, AI-based diagnosis and GenAI explanation**, allowing farmers or researchers to upload an image and get:
+- The **predicted disease name**
+- An **explanation and treatment** generated using **AWS Bedrock (Claude / Titan)**
 
 ---
 
 ## 🌟 Key Highlights
 
-✅ End-to-End ML System (Training → Deployment → UI)  
-✅ Real-time disease detection via Flask UI  
-✅ Model hosted on **AWS SageMaker**  
-✅ Inference served by **AWS Lambda** and **API Gateway**  
-✅ Fully automated using **Terraform** and **GitHub Actions**  
-✅ Serverless, cost-effective, scalable  
+✅ End-to-End MLOps Project: Train → Deploy → Explain  
+✅ Real-time predictions with AI explainability via GenAI  
+✅ Model hosted on **AWS SageMaker Endpoint**  
+✅ Predictions served through **AWS Lambda + API Gateway**  
+✅ Explanations generated via **AWS Bedrock (Claude/Titan)**  
+✅ Infrastructure managed by **Terraform (IaC)**  
+✅ CI/CD powered by **GitHub Actions**  
+✅ Lightweight frontend using Flask (can be containerized)
 
 ---
 
-## 🧠 AI Capabilities
+## 🧠 AI & GenAI Capabilities
 
-- **Model Type**: CNN-based deep learning model
-- **Framework**: TensorFlow / PyTorch (exported to `.tar.gz`)
-- **Training Dataset**: Labeled images of grape leaves
-- **Classification Labels**:
+- **Model Type**: Convolutional Neural Network (CNN)
+- **Framework**: PyTorch  
+- **Trained On**: Grape leaf image dataset (labeled)
+- **Prediction Classes**:
   - 🍇 Black Rot  
   - 🍇 Esca (Black Measles)  
   - 🍇 Leaf Blight  
   - ✅ Healthy  
 
----
-
-## 🧱 Tech Stack
-
-| Layer             | Technology                           |
-|------------------|--------------------------------------|
-| Frontend UI       | HTML, CSS, Flask (Python)            |
-| Backend API       | AWS Lambda + API Gateway             |
-| ML Hosting        | AWS SageMaker                        |
-| Infrastructure    | Terraform (IaC)                      |
-| CI/CD Pipeline    | GitHub Actions                       |
-| Artifact Storage  | Amazon S3                            |
-| Containerization  | Lambda + ZIP package                 |
+- **GenAI Explanation**:  
+  After predicting the disease, a prompt is sent to **AWS Bedrock** using **Claude v2 / Titan Text Lite**, generating actionable disease explanation and treatment steps.
 
 ---
 
-## 🖥️ User Features
+## 🧱 Tech Stack Overview
 
-- Upload any grape leaf image
-- Get instant prediction from a trained AI model
-- Clean, responsive, modern UI
-- Works locally or hosted on cloud
-- Integrated CI/CD for continuous delivery
+| Layer              | Technology                            |
+|-------------------|----------------------------------------|
+| Frontend UI        | HTML + CSS + Flask (Python)           |
+| Backend API        | AWS Lambda + API Gateway              |
+| ML Model Hosting   | AWS SageMaker                         |
+| GenAI Integration  | AWS Bedrock (Claude / Titan)          |
+| Infrastructure     | Terraform (Infrastructure as Code)    |
+| CI/CD              | GitHub Actions                        |
+| Artifact Storage   | Amazon S3                             |
+| Packaging          | Lambda ZIP Deployment                 |
+
+---
+
+## 🖥️ Features for Users
+
+- Upload grape leaf image via a simple UI
+- Receive:
+  - Predicted disease name  
+  - GenAI-generated explanation + treatment
+- Scalable, secure, and serverless
+- Can be run locally or fully cloud-hosted
+- Re-deployable with one command (`terraform apply`)
 
 ---
 
@@ -66,8 +76,10 @@ This solution provides a **real-time, AI-driven prediction system** deployed on 
 
 ```mermaid
 graph TD;
-    A[User Uploads Image via Flask UI] --> B[Base64 Encoded & Sent to API Gateway];
-    B --> C[API Gateway Triggers Lambda];
-    C --> D[Lambda Calls SageMaker Endpoint];
-    D --> E[SageMaker Returns Prediction];
-    E --> F[Result Displayed on UI];
+    A[User uploads grape leaf image via Flask UI] --> B[Base64 image sent to API Gateway];
+    B --> C[API Gateway triggers Lambda function];
+    C --> D[Lambda sends image to SageMaker Endpoint];
+    D --> E[Model returns disease prediction];
+    E --> F[Lambda sends prompt to Bedrock with disease name];
+    F --> G[Bedrock returns explanation];
+    G --> H[UI displays disease + treatment];
